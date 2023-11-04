@@ -1,0 +1,5 @@
+C:\Users\Deel\Desktop\New folder\ConsoleApp1.exe
+C:\Users\Deel\Desktop\New folder\ConsoleApp1.dll
+C:\Users\Deel\Desktop\New folder\ConsoleApp1.deps.json
+C:\Users\Deel\Desktop\New folder\ConsoleApp1.runtimeconfig.json
+C:\Users\Deel\Desktop\New folder\ConsoleApp1.pdb
