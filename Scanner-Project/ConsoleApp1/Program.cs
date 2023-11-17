@@ -1,20 +1,20 @@
 ﻿namespace ConsoleApp1
 {
-	internal class Program
+	public class Program
 	{
 		static void Main(string[] args)
 		{
             Console.WriteLine("Enter Source Code: ");
-			
-			List<string> lines = new List<string>();
+			Console.WriteLine("Write exec to start the code");
+			List<string> lines = new();
 
 			string line= Console.ReadLine()!;
-			while (line!="end")
+			while (line!="exec")
 			{
 				lines.Add(line);
 				line = Console.ReadLine()!.ToLower();
 			}
-			lines.Add("end");
+			//lines.Add("end");
             string sourceCode = "";
 			foreach (var item in lines)
 			{
@@ -28,7 +28,15 @@
 				Console.WriteLine(item);
 			}
 
-			Console.WriteLine("Press Any Key to Exit");
+            if (Errors.Error_List.Count > 0)
+            {
+                foreach (var error in Errors.Error_List)
+                {
+                    Console.WriteLine(error);
+                }
+            }
+
+            Console.WriteLine("Press Any Key to Exit");
 			Console.ReadKey();
         }
 	}

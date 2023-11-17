@@ -11,16 +11,14 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public enum Token_Class
 {
-	T_Number, T_String_Literal, T_Identifier,
+	NUMBER, IDENTIFIER,
 
 	//Operators
-	T_PlusOP, T_MinusOP, T_MulitplyOP, T_DivideOP, T_AssignOP, T_EqualOP, T_NotEqualOP,
-	T_AndOP, T_OrOP, T_GreaterThanOP, T_SmallerThanOP, T_NotOP,
-	T_Semicolon, T_Dot, T_Comma, T_RightBracket, T_LeftBracket, T_LeftBrace, T_RightBrace, T_RightParentheses, T_LeftParentheses,
-	T_GreaterThanOrEqualOP, T_SmallerThanOrEqualOP,
+	PLUS, MINUS, MULT, DIV, ASSIGN, EQUAL, 
+	LESSTHAN, SEMICOLON, OPENBRACKET, CLOSEDBRACKET,
 
 	//Reserved words
-	T_Int, T_Main, T_Float, T_String, T_Read, T_Write, T_Repeat, T_Until, T_If, T_ElseIf, T_Else, T_Then, T_Return, T_End, T_Endl
+	 READ,WRITE, REPEAT, UNTIL, IF, THEN, END
 }
 namespace ConsoleApp1
 {
@@ -28,65 +26,43 @@ namespace ConsoleApp1
 
 	public class Token
 	{
-		public string lex;
+		public string lex = "";
 		public Token_Class token_type;
 
 		public override string ToString()
 		{
-			return $"{lex},{token_type}";
+			return $"{lex}\t,{token_type}";
 		}
 	}
 
 	public class Scanner
 	{
-		public List<Token> Tokens = new List<Token>();
+		public List<Token> Tokens = new();
 
-		Dictionary<string, Token_Class> ReservedWords = new Dictionary<string, Token_Class>();
-		Dictionary<string, Token_Class> Operators = new Dictionary<string, Token_Class>();
+        readonly Dictionary<string, Token_Class> ReservedWords = new ();
+		readonly Dictionary<string, Token_Class> Operators = new ();
 
 		public Scanner()
 		{
-			ReservedWords.Add("int", Token_Class.T_Int);
-			ReservedWords.Add("float", Token_Class.T_Float);
-			ReservedWords.Add("string", Token_Class.T_String);
-			ReservedWords.Add("read", Token_Class.T_Read);
-			ReservedWords.Add("write", Token_Class.T_Write);
-			ReservedWords.Add("repeat", Token_Class.T_Repeat);
-			ReservedWords.Add("until", Token_Class.T_Until);
-			ReservedWords.Add("if", Token_Class.T_If);
-			ReservedWords.Add("elseif", Token_Class.T_ElseIf);
-			ReservedWords.Add("else", Token_Class.T_Else);
-			ReservedWords.Add("then", Token_Class.T_Then);
-			ReservedWords.Add("return", Token_Class.T_Return);
-			ReservedWords.Add("main", Token_Class.T_Main);
-			ReservedWords.Add("end", Token_Class.T_End);
-			ReservedWords.Add("endl", Token_Class.T_Endl);
 
-
+			ReservedWords.Add("read", Token_Class.READ);
+			ReservedWords.Add("write", Token_Class.WRITE);
+			ReservedWords.Add("repeat", Token_Class.REPEAT);
+			ReservedWords.Add("until", Token_Class.UNTIL);
+			ReservedWords.Add("if", Token_Class.IF);
+			ReservedWords.Add("then", Token_Class.THEN);
+			ReservedWords.Add("end", Token_Class.END);
 			//Operators.Add(".", Token_Class.T_Dot);
-			Operators.Add(";", Token_Class.T_Semicolon);
-			Operators.Add(",", Token_Class.T_Comma);
-			Operators.Add("(", Token_Class.T_LeftParentheses);
-			Operators.Add(")", Token_Class.T_RightParentheses);
-			Operators.Add("[", Token_Class.T_LeftBracket);
-			Operators.Add("]", Token_Class.T_RightBracket);
-			Operators.Add("{", Token_Class.T_LeftBrace);
-			Operators.Add("}", Token_Class.T_RightBrace);
-			Operators.Add(">", Token_Class.T_GreaterThanOP);
-			Operators.Add(">=", Token_Class.T_GreaterThanOrEqualOP);
-			Operators.Add("<=", Token_Class.T_SmallerThanOrEqualOP);
-			Operators.Add("<", Token_Class.T_SmallerThanOP);
-			Operators.Add("<>", Token_Class.T_NotEqualOP);
-			Operators.Add("!", Token_Class.T_NotOP);
-			Operators.Add("-", Token_Class.T_MinusOP);
-			Operators.Add("–", Token_Class.T_MinusOP);
-			Operators.Add("+", Token_Class.T_PlusOP);
-			Operators.Add("*", Token_Class.T_MulitplyOP);
-			Operators.Add("/", Token_Class.T_DivideOP);
-			Operators.Add("||", Token_Class.T_OrOP);
-			Operators.Add("&&", Token_Class.T_AndOP);
-			Operators.Add(":=", Token_Class.T_AssignOP);
-			Operators.Add("=", Token_Class.T_EqualOP);
+			Operators.Add(";", Token_Class.SEMICOLON);
+			Operators.Add("(", Token_Class.CLOSEDBRACKET);
+			Operators.Add(")", Token_Class.OPENBRACKET);
+			Operators.Add("<", Token_Class.LESSTHAN);
+			Operators.Add("-", Token_Class.MINUS);
+			Operators.Add("+", Token_Class.PLUS);
+			Operators.Add("*", Token_Class.MULT);
+			Operators.Add("/", Token_Class.DIV);
+			Operators.Add(":=", Token_Class.ASSIGN);
+			Operators.Add("=", Token_Class.EQUAL);
 		}
 
 		public void StartScanning(string SourceCode)
@@ -100,44 +76,30 @@ namespace ConsoleApp1
 				if (CurrentChar == ' ' || CurrentChar == '\r' || CurrentChar == '\n') //Whitespace
 					continue;
 
-				if (SourceCode[j] >= '0' && SourceCode[j] <= '9' || SourceCode[j] == '.' || SourceCode[j] >= 'A' && SourceCode[j] <= 'z') //Identifier lexeme
+				if (Errors.Error_List.Count > 0)
+					break;
+
+				if (SourceCode[j] >= '0' && SourceCode[j] <= '9' || SourceCode[j] >= 'A' && SourceCode[j] <= 'z') //Identifier lexeme
 				{
 					j++;
 					while (j < SourceCode.Length)
 					{
-						if (SourceCode[j] >= '0' && SourceCode[j] <= '9' || SourceCode[j] == '.' || SourceCode[j] >= 'A' && SourceCode[j] <= 'z')
+						if (SourceCode[j] >= '0' && SourceCode[j] <= '9' || SourceCode[j] >= 'A' && SourceCode[j] <= 'z')
 						{
 							CurrentLexeme += SourceCode[j].ToString();
 						}
-						else { break; }
+						else break; 
 						j++;
 					}
 					FindTokenClass(CurrentLexeme);
 					i = j - 1;
 					continue;
 				}
-				else if (CurrentChar == '"') //String literal lexeme
-				{
-					j++;
-					while (j < SourceCode.Length)
-					{
-						CurrentLexeme += SourceCode[j].ToString();
-						j++;
-						if (SourceCode[j - 1] == '"')
-						{
-							break;
-						}
-					}
-					FindTokenClass(CurrentLexeme.Trim());
-					i = j - 1;
-					continue;
-				}
-
-				else if (CurrentChar == '/') //Comment lexeme to disregard
+				else if (CurrentChar == '{') //Comment lexeme to disregard
 				{
 					bool closed = false;
 					j++;
-					if (j < SourceCode.Length && SourceCode[j] == '*')
+					if (j < SourceCode.Length)
 					{
 						CurrentLexeme += SourceCode[j].ToString();
 						j++;
@@ -147,7 +109,7 @@ namespace ConsoleApp1
 							{
 								CurrentLexeme += SourceCode[j].ToString();
 								j++;
-								if (SourceCode[j - 1] == '*' && SourceCode[j] == '/')
+								if (SourceCode[j] == '}')
 								{
 									CurrentLexeme += SourceCode[j].ToString();
 									closed = true;
@@ -159,62 +121,31 @@ namespace ConsoleApp1
 						catch (Exception)
 						{
 							Errors.Error_List.Add("Comment not closed");
-							closed = true;
-							i = j;
-							continue;
+							//i = j;
+							break;
 						}
 						if (!closed)
 						{
 							Errors.Error_List.Add("Comment not closed");
-							i = j;
-							continue;
+							//i = j;
+							break;
 						}
 
 					}
-					else
-					{
-						//Division Operator:
-						FindTokenClass(CurrentLexeme);
-						continue;
-					}
 					//FindTokenClass(CurrentLexeme);
-					i = j;
 				}
-				//To handle assignment operator, because it is the only OP with two characters
-				else if (CurrentChar == ':')
+				else if(CurrentChar == '}')
+				{
+                    Errors.Error_List.Add("Comment not opened");
+					break;
+                }
+                //To handle assignment operator, because it is the only OP with two characters
+                else if (CurrentChar == ':')
 				{
 					j++;
 					if (j < SourceCode.Length && SourceCode[j] == '=')
 					{
 						CurrentLexeme += SourceCode[j].ToString();
-					}
-
-				}
-				else if (CurrentChar == '<')
-				{
-					j++;
-					if (j < SourceCode.Length && SourceCode[j] == '>' || SourceCode[j] == '=')
-					{
-						CurrentLexeme += SourceCode[j].ToString();
-
-					}
-					else
-					{
-						j--;
-					}
-
-				}
-				else if (CurrentChar == '>')
-				{
-					j++;
-					if (j < SourceCode.Length && SourceCode[j] == '=')
-					{
-						CurrentLexeme += SourceCode[j].ToString();
-
-					}
-					else
-					{
-						j--;
 					}
 
 				}
@@ -249,17 +180,11 @@ namespace ConsoleApp1
 		void FindTokenClass(string Lex)
 		{
 			Token_Class TC;
-			Token Tok = new Token();
+			Token Tok = new();
 			Tok.lex = Lex;
 
-			//Is it a string literal?
-			if (isStringLiteral(Lex))
-			{
-				Tok.token_type = Token_Class.T_String_Literal;
-				Tokens.Add(Tok);
-			}
 			//Is it a reserved word?
-			else if (ReservedWords.ContainsKey(Lex))
+			if (ReservedWords.ContainsKey(Lex))
 			{
 				Tok.token_type = ReservedWords[Lex];
 				Tokens.Add(Tok);
@@ -267,13 +192,13 @@ namespace ConsoleApp1
 			//Is it an identifier?
 			else if (isIdentifier(Lex))
 			{
-				Tok.token_type = Token_Class.T_Identifier;
+				Tok.token_type = Token_Class.IDENTIFIER;
 				Tokens.Add(Tok);
 			}
 			//Is it a Constant?
 			else if (isNumber(Lex))
 			{
-				Tok.token_type = Token_Class.T_Number;
+				Tok.token_type = Token_Class.NUMBER;
 				Tokens.Add(Tok);
 			}
 			//Is it an operator?
@@ -282,8 +207,7 @@ namespace ConsoleApp1
 				Tok.token_type = Operators[Lex];
 				Tokens.Add(Tok);
 			}
-			else if (Lex[0] == '/' && Lex[1] == '*'
-				&& Lex[Lex.Length - 2] == '*' && Lex[Lex.Length - 1] == '/')
+			else if (Lex[0] == '{' && Lex[Lex.Length - 1] == '}')
 			{
 				//Do Noting
 			}
@@ -304,7 +228,7 @@ namespace ConsoleApp1
 			{
 				for (int i = 1; i < lex.Length; i++)
 				{
-					if ((lex[i] >= '0' && lex[i] <= '9' || (lex[i] >= 'A' && lex[i] <= 'z'))) continue;
+					if ((lex[i] >= 'A' && lex[i] <= 'Z') || (lex[i] >= 'a' && lex[i] <= 'z') || lex[i] == '_') continue;
 					else return false;
 				}
 				return true;
@@ -318,46 +242,13 @@ namespace ConsoleApp1
 		}
 		bool isNumber(string lex)
 		{
-			bool isValid = false;
-
-			if (lex[0] == '+' || lex[0] == '-') // +, - are optional and they are accepted
-			{
-				lex = lex.Substring(1, lex.Length - 1);
-			}
-
 			if (lex.Length > 0 && (lex[0] >= '0' && lex[0] <= '9')) //starts with a digit
 			{
-				isValid = true;
 				for (int i = 1; i < lex.Length; i++)
 				{
 					if ((lex[i] >= '0' && lex[i] <= '9'))
 					{
 						continue;
-					}
-					else if (lex[i] == '.')
-					{
-						i++;
-						if (i < lex.Length && lex[i] >= '0' && lex[i] <= '9')
-						{
-							for (int j = i + 1; j < lex.Length; j++)
-							{
-								if ((lex[j] >= '0' && lex[j] <= '9'))
-								{
-									continue;
-								}
-								else
-								{
-									return false;
-								}
-							}
-							return true;
-						}
-						else
-						{
-							return false;
-
-						}
-
 					}
 					else
 					{
@@ -372,33 +263,5 @@ namespace ConsoleApp1
 			}
 
 		}
-
-		bool isStringLiteral(string lex)
-		{
-			// Check if the lex is a String Literal or not.
-
-			if (lex[0] == '"' && lex.Length > 1)
-			{
-				for (int i = 1; i < lex.Length; i++)
-				{
-					if (lex[i] == '"')
-					{
-						for (int j = i + 1; j < lex.Length; j++)
-						{
-							if (lex[j] == '"') return false;
-						}
-						return true;
-					}
-				}
-				return false;
-			}
-			else
-			{
-				return false;
-			}
-
-		}
 	}
 }
-
-

@@ -13,3 +13,18 @@ C:\Users\Deel\Desktop\Test\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0\refint\Scann
 C:\Users\Deel\Desktop\Test\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0\Scanner-Project.pdb
 C:\Users\Deel\Desktop\Test\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0\Scanner-Project.genruntimeconfig.cache
 C:\Users\Deel\Desktop\Test\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0\ref\Scanner-Project.dll
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\bin\Debug\net7.0\Scanner-Project.exe
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\bin\Debug\net7.0\Scanner-Project.deps.json
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\bin\Debug\net7.0\Scanner-Project.runtimeconfig.json
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\bin\Debug\net7.0\Scanner-Project.dll
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\bin\Debug\net7.0\Scanner-Project.pdb
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Debug\net7.0\Scanner-Project.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Debug\net7.0\Scanner-Project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Debug\net7.0\Scanner-Project.AssemblyInfoInputs.cache
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Debug\net7.0\Scanner-Project.AssemblyInfo.cs
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Debug\net7.0\Scanner-Project.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Debug\net7.0\Scanner-Project.dll
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Debug\net7.0\refint\Scanner-Project.dll
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Debug\net7.0\Scanner-Project.pdb
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Debug\net7.0\Scanner-Project.genruntimeconfig.cache
+C:\Users\DELL\Desktop\Compiler Project\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Debug\net7.0\ref\Scanner-Project.dll
