@@ -1,0 +1,15 @@
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\bin\Release\net7.0\Scanner-Project.exe
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\bin\Release\net7.0\Scanner-Project.deps.json
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\bin\Release\net7.0\Scanner-Project.runtimeconfig.json
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\bin\Release\net7.0\Scanner-Project.dll
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\bin\Release\net7.0\Scanner-Project.pdb
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Release\net7.0\Scanner-Project.csproj.AssemblyReference.cache
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Release\net7.0\Scanner-Project.GeneratedMSBuildEditorConfig.editorconfig
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Release\net7.0\Scanner-Project.AssemblyInfoInputs.cache
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Release\net7.0\Scanner-Project.AssemblyInfo.cs
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Release\net7.0\Scanner-Project.csproj.CoreCompileInputs.cache
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Release\net7.0\Scanner-Project.dll
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Release\net7.0\refint\Scanner-Project.dll
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Release\net7.0\Scanner-Project.pdb
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Release\net7.0\Scanner-Project.genruntimeconfig.cache
+D:\University\Reports\Compilers\Scanner\Tiny-Scanner\Scanner-Project\ConsoleApp1\obj\Release\net7.0\ref\Scanner-Project.dll

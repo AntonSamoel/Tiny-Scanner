@@ -4,8 +4,8 @@
 	{
 		static void Main(string[] args)
 		{
-            Console.WriteLine("Enter Source Code: ");
-			Console.WriteLine("Write exec to start the code");
+			Console.WriteLine("Write 'exec' to start generating tokens");
+			Console.WriteLine("Enter Source Code: ");
 			List<string> lines = new();
 
 			string line= Console.ReadLine()!;
@@ -23,8 +23,12 @@
 			Scanner scanner = new Scanner();
 			scanner.StartScanning(sourceCode);
 
-			foreach (var item in scanner.Tokens)
+			string output = "";
+            Console.WriteLine("======== Output in Cmd ========");
+            Console.WriteLine();
+            foreach (var item in scanner.Tokens)
 			{
+				output+= item.ToString() + "\n";
 				Console.WriteLine(item);
 			}
 
@@ -36,6 +40,16 @@
                 }
             }
 
+			// Create a file with output 
+			string directory = AppDomain.CurrentDomain.BaseDirectory;
+			string fileName = "output.txt";
+			string filePath = Path.Combine(directory, fileName);
+			File.WriteAllText(filePath,output);
+			Console.WriteLine();
+			Console.WriteLine("======== Output in File ========");
+
+			Console.WriteLine($"Output File created at: {filePath}");
+            Console.WriteLine();
             Console.WriteLine("Press Any Key to Exit");
 			Console.ReadKey();
         }

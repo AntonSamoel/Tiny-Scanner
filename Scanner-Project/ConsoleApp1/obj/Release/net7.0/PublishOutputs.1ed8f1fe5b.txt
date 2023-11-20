@@ -1,5 +1,5 @@
-C:\Users\Deel\Desktop\New folder\ConsoleApp1.exe
-C:\Users\Deel\Desktop\New folder\ConsoleApp1.dll
-C:\Users\Deel\Desktop\New folder\ConsoleApp1.deps.json
-C:\Users\Deel\Desktop\New folder\ConsoleApp1.runtimeconfig.json
-C:\Users\Deel\Desktop\New folder\ConsoleApp1.pdb
+C:\Users\Deel\Desktop\New folder\Scanner-Project.exe
+C:\Users\Deel\Desktop\New folder\Scanner-Project.dll
+C:\Users\Deel\Desktop\New folder\Scanner-Project.deps.json
+C:\Users\Deel\Desktop\New folder\Scanner-Project.runtimeconfig.json
+C:\Users\Deel\Desktop\New folder\Scanner-Project.pdb

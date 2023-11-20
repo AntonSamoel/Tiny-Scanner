@@ -1,0 +1,5 @@
+C:\Users\Deel\Desktop\EXE\Scanner-Project.exe
+C:\Users\Deel\Desktop\EXE\Scanner-Project.dll
+C:\Users\Deel\Desktop\EXE\Scanner-Project.deps.json
+C:\Users\Deel\Desktop\EXE\Scanner-Project.runtimeconfig.json
+C:\Users\Deel\Desktop\EXE\Scanner-Project.pdb
